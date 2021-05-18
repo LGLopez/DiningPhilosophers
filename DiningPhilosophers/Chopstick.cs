@@ -11,11 +11,11 @@ namespace DiningPhilosophers
     {
         private bool taken = false;
 
-        private int identity;
+        private int id;
 
         public Chopstick(int id)
         {
-            identity = id;
+            this.id = id;
         }
 
         public void Get()
@@ -28,7 +28,7 @@ namespace DiningPhilosophers
                 }
                 taken = true;
 
-                Console.WriteLine("Chopstick " + identity + " tomado");
+                Console.WriteLine("Chopstick " + id + " tomado");
             }
         }
 
@@ -37,7 +37,7 @@ namespace DiningPhilosophers
             lock(this)
             {
                 taken = false;
-                Console.WriteLine("Chopstick " + identity + " bajado a la mesa.");
+                Console.WriteLine("Chopstick " + id + " bajado a la mesa.");
                 Monitor.Pulse(this);
             }
         }
