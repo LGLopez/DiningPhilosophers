@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace DiningPhilosophers
 {
@@ -12,6 +12,7 @@ namespace DiningPhilosophers
         private Chopstick left;
         private Chopstick right;
         private int timesEat;
+        private Random rand = new Random();
 
         public Philosopher(int id, Chopstick left, Chopstick right)
         {
@@ -24,8 +25,6 @@ namespace DiningPhilosophers
         {
             while (timesEat < 5)
             {
-                Console.WriteLine("Filosofo " + id + " esta pensando");
-                
                 Console.WriteLine("Filosofo " + id + " tiene hambre");
 
                 if (id % 2 == 0)
@@ -42,19 +41,20 @@ namespace DiningPhilosophers
                 if (id % 2 == 0)
                 {
                     right.Get();
-                    Console.WriteLine("El filosofo " + id + " tomo el chostick derecho");
-                    Console.WriteLine("Ha comido " + ++timesEat + " veces");
+                    Console.WriteLine("El filosofo " + id + " tomo el chostick derecho\nFilosofo " + id + ": Ha comido " + ++timesEat + " veces");
                 }
                 else
                 {
                     left.Get();
-                    Console.WriteLine("El filosofo " + id + " tomo el chostick izquierdo");
-                    Console.WriteLine("Ha comido " + ++timesEat + " veces");
+                    Console.WriteLine("El filosofo " + id + " tomo el chostick izquierdo\nFilosofo " + id + ": Ha comido " + ++timesEat + " veces");
                 }
 
                 right.Put();
                 left.Put();
+                Console.WriteLine("El filosofo " + id + " bajo los chopsticks.\nFilosofo " + id + " esta pensando");
+                Thread.Sleep(rand.Next(1, 9) * 100);
             }
+            Console.WriteLine("El filosofo " + id + " termino de comer.");
         }
 
 

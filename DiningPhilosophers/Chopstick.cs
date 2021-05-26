@@ -28,7 +28,7 @@ namespace DiningPhilosophers
                 }
                 taken = true;
 
-                Console.WriteLine("Chopstick " + id + " tomado");
+                // Console.WriteLine("Chopstick " + id + " tomado");
             }
         }
 
@@ -37,7 +37,7 @@ namespace DiningPhilosophers
             lock(this)
             {
                 taken = false;
-                Console.WriteLine("Chopstick " + id + " bajado a la mesa.");
+                // Console.WriteLine("Chopstick " + id + " bajado a la mesa.");
                 Monitor.Pulse(this);
             }
         }
