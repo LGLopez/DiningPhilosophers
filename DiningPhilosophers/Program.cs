@@ -34,7 +34,5 @@ namespace DiningPhilosophers
             Philosopher p = new Philosopher(id, left, right);
             return new Thread(new ThreadStart( p.RunPhilosopher) );
         }
-
-
     }
 }

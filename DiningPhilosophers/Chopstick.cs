@@ -24,11 +24,10 @@ namespace DiningPhilosophers
             {
                 while (taken)
                 {
+                    Console.WriteLine("El chopstick " + id + " se intento tomar pero esta siendo usado.");
                     Monitor.Wait(this);
                 }
                 taken = true;
-
-                // Console.WriteLine("Chopstick " + id + " tomado");
             }
         }
 
@@ -37,7 +36,6 @@ namespace DiningPhilosophers
             lock(this)
             {
                 taken = false;
-                // Console.WriteLine("Chopstick " + id + " bajado a la mesa.");
                 Monitor.Pulse(this);
             }
         }

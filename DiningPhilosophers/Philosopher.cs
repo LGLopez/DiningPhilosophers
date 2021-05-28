@@ -25,7 +25,9 @@ namespace DiningPhilosophers
         {
             while (timesEat < 5)
             {
-                Console.WriteLine("Filosofo " + id + " tiene hambre");
+                Console.WriteLine("El filosofo " + id + " esta pensando");
+                Thread.Sleep(rand.Next(1, 8) * 500);
+                Console.WriteLine("El filosofo " + id + " tiene hambre");
 
                 if (id % 2 == 0)
                 {
@@ -41,23 +43,20 @@ namespace DiningPhilosophers
                 if (id % 2 == 0)
                 {
                     right.Get();
-                    Console.WriteLine("El filosofo " + id + " tomo el chostick derecho\nFilosofo " + id + ": Ha comido " + ++timesEat + " veces");
+                    Console.WriteLine("El filosofo " + id + " tomo el chostick derecho\nEl filosofo " + id + ": Ha comido " + ++timesEat + " veces");
                 }
                 else
                 {
                     left.Get();
-                    Console.WriteLine("El filosofo " + id + " tomo el chostick izquierdo\nFilosofo " + id + ": Ha comido " + ++timesEat + " veces");
+                    Console.WriteLine("El filosofo " + id + " tomo el chostick izquierdo\nEl filosofo " + id + ": Ha comido " + ++timesEat + " veces");
                 }
 
                 right.Put();
                 left.Put();
-                Console.WriteLine("El filosofo " + id + " bajo los chopsticks.\nFilosofo " + id + " esta pensando");
-                Thread.Sleep(rand.Next(1, 9) * 100);
+                Console.WriteLine("El filosofo " + id + " bajo los chopsticks.");
             }
             Console.WriteLine("El filosofo " + id + " termino de comer.");
         }
-
-
     }
 }
 ;
